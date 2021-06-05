@@ -6,7 +6,7 @@ api = Api(app)
 
 class Greeting(Resource):
     def get(self):
-        return {"message": "WelCome to Flask API"}
+        return {"message": "WelCome to Flask API..."}
 
 api.add_resource( Greeting, '/')
 
