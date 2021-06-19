@@ -18,16 +18,22 @@ def splitDateRange(dateRangeList, newDateRange):
 
 
 def adjustDateRange(dateRage, newDateRange):
+
+    adjDateRange = copy(newDateRange)
+    if(adjDateRange.start_dt < dateRage.start_dt):
+        adjDateRange.start_dt= dateRage.start_dt
+
+    if(adjDateRange.end_dt > dateRage.end_dt):
+        adjDateRange.end_dt= dateRage.end_dt
+
     dates = sorted({
         dateRage.start_dt,
         dateRage.end_dt,
-        newDateRange.start_dt,
-        newDateRange.end_dt
+        adjDateRange.start_dt,
+        adjDateRange.end_dt
     })
 
     oneday = timedelta(days=1)
-
-    print(len(dates))
 
     if(dateRage.__eq__(newDateRange)):
         return [dateRage]
@@ -85,29 +91,6 @@ def generateDateRange(dateBands):
 
     return dateRanges
 
-
-def test():
-
-    salesPeriod = DateRange(date(2021, 1, 1), date(2021, 12, 31))
-    priceDateBand1 = DateRange(date(2021, 1, 1), date(2021, 6, 30))
-    priceDateBand2 = DateRange(date(2021, 7, 1), date(2021, 12, 31))
-
-    dateBandList = []
-    dateBandList.append(salesPeriod)
-    dateBandList = generateDateRange(dateBandList, priceDateBand1)
-
-    print(dateBandList)
-
-    dateBandList = generateDateRange(dateBandList, priceDateBand2)
-
-    print(dateBandList)
-
-    dateBandList = generateDateRange(
-        dateBandList, DateRange(date(2021, 5, 1), date(2021, 8, 31)))
-
-    print((dateBandList))
-
-    print(sorted(set(dateBandList), key=lambda x: x.start_dt))
 
 
 def populateKeys(dateBands, dateRanges):
@@ -176,12 +159,3 @@ def printPairs(pairs):
             print('         Booking Dates: {} - {}'.format(bookingDate.start_dt.strftime('%Y-%m-%d'),bookingDate.end_dt.strftime('%Y-%m-%d')))
             print('         Booking keys: {} '.format(bookingKey))
 findPairs(stageSalesData(), stageBookingData())
-
-x = {2, 3, 5, 6}
-y = {1, 2, 3, 4}
-
-x.add(1)
-
-z = x ^ y
-
-print(z)

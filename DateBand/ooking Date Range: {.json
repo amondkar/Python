@@ -1,0 +1,6 @@
+ooking Date Range: {
+    <DateRange(datetime.date(2021, 2, 1), datetime.date(2021, 2, 28))>, 
+    <DateRange(datetime.date(2021, 3, 1), datetime.date(2021, 3, 31))>, 
+    <DateRange(datetime.date(2021, 5, 1), datetime.date(2021, 11, 30))>, 
+    <DateRange(datetime.date(2020, 12, 1), datetime.date(2021, 1, 31))>, 
+    <DateRange(datetime.date(2021, 4, 1), datetime.date(2021, 4, 30))>}
