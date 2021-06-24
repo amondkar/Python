@@ -1,5 +1,7 @@
 import numpy as np
 import timeit
+import BubbleSort
+from copy import copy
 
 def partition(list):
     
@@ -34,9 +36,11 @@ def quickSort(inputList):
     #print(inputList)
 
 
-inputList = np.random.randint(-100, 100, 25)
-
+inputList = np.random.randint(-100, 100, 10000)
+inputList1 = copy(inputList)
 #print(inputList)
 t = timeit.Timer(lambda:quickSort(inputList))
-print(t.timeit(number=1000))
-print(inputList)
+print('Qucik sort time ', t.timeit(number=1))
+
+t = timeit.Timer(lambda:BubbleSort.bubbleSort(inputList1))
+print('Bubble sort time ', t.timeit(number=1))
